@@ -1,5 +1,6 @@
 package com.springsecurityjwt.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -24,8 +25,10 @@ import com.springsecurityjwt.service.UserService;
 @EnableMethodSecurity
 public class SecurityConfiguration {
 
+	@Autowired
 	private JWTAuthenticationFilter jwtFilter;
 	
+	@Autowired
 	private UserService userServ;
 	
 	@Bean
