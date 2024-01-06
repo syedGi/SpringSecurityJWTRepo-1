@@ -34,11 +34,12 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
 
-		final String authHeader = request.getHeader("Authentication");
+//		final String authHeader = request.getHeader("Authentication");
+		final String authHeader = request.getHeader("Authorization");
 		final String jwt;
 		String userEmail;
 
-		if (StringUtils.isEmpty(authHeader) || org.apache.commons.lang3.StringUtils.startsWith(authHeader, "Bearer ")) {
+		if (StringUtils.isEmpty(authHeader) || !org.apache.commons.lang3.StringUtils.startsWith(authHeader, "Bearer ")) {
 			filterChain.doFilter(request, response);
 			return;
 		}
